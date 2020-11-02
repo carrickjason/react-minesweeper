@@ -15,8 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
-    "prettier-watch": "onchange \"**/*.{js,jsx,ts,tsx,md}\" -- prettier --write {{changed}}"
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
+    "format-watch": "onchange \"**/*.{js,jsx,ts,tsx,md}\" -- prettier --write {{changed}}"
   },
   "eslintConfig": {
     "extends": "react-app"
