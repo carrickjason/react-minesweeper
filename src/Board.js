@@ -1,6 +1,7 @@
 import React from 'react'
 import Cell from './Cell'
 import styles from './styles.js'
+import { SWEEP_CELL } from './actions/constants'
 
 function renderRow(gameGrid, rowIndex, gameLost, dispatch) {
   const cols = []
@@ -16,7 +17,7 @@ function renderRow(gameGrid, rowIndex, gameLost, dispatch) {
         clickHandler={e => {
           e.stopPropagation()
           dispatch({
-            type: 'sweepCell',
+            type: SWEEP_CELL,
             payload: { x: rowIndex, y, shiftKey: e.shiftKey },
           })
         }}

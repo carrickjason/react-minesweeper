@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 
+import { START_GAME } from './actions/constants'
+
 const NewGameControls = ({ width, height, numMines, dispatch }) => {
   const widthEl = useRef(null)
   const heightEl = useRef(null)
@@ -9,7 +11,7 @@ const NewGameControls = ({ width, height, numMines, dispatch }) => {
       <form
         onSubmit={e => {
           dispatch({
-            type: 'startGame',
+            type: START_GAME,
             payload: {
               width: widthEl.current.value,
               height: heightEl.current.value,

@@ -1,9 +1,15 @@
-import { makeGameGrid } from './util/makeGameGrid.js'
-import { getNumberRemainingFlags } from './util/getNumberRemainingFlags.js'
-import { toggleFlag } from './util/toggleFlag.js'
-import { sweepLocation } from './util/sweepLocation.js'
-import { isGameLost } from './util/isGameLost.js'
-import { isGameWon } from './util/isGameWon.js'
+import { makeGameGrid } from './util/makeGameGrid'
+import { getNumberRemainingFlags } from './util/getNumberRemainingFlags'
+import { toggleFlag } from './util/toggleFlag'
+import { sweepLocation } from './util/sweepLocation'
+import { isGameLost } from './util/isGameLost'
+import { isGameWon } from './util/isGameWon'
+import {
+  RESTART_GAME,
+  START_GAME,
+  SWEEP_CELL,
+  STOP_TIMER,
+} from './actions/constants'
 
 const initialState = {
   gameGrid: null,
@@ -20,9 +26,9 @@ const initialState = {
 
 function boardReducer(state, action) {
   switch (action.type) {
-    case 'restartGame':
+    case RESTART_GAME:
       return Object.assign({}, state, { gameStarted: false })
-    case 'startGame':
+    case START_GAME:
       const gameGrid = makeGameGrid(action.payload)
       const numRemainingFlags = getNumberRemainingFlags(
         gameGrid,
@@ -33,7 +39,7 @@ function boardReducer(state, action) {
         gameGrid,
         numRemainingFlags,
       })
-    case 'sweepCell':
+    case SWEEP_CELL:
       const { x, y, shiftKey } = action.payload
       let gameTimerDelay = 1000
       if (shiftKey) {
@@ -62,7 +68,7 @@ function boardReducer(state, action) {
           gameTimerDelay,
         })
       }
-    case 'stopTimer':
+    case STOP_TIMER:
       return Object.assign({}, state, { gameTimerComponent: null })
     default:
       return state
