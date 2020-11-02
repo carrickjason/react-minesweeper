@@ -1,25 +1,20 @@
-import React from 'react';
-import styles from './styles';
+import React from 'react'
+import styles from './styles'
 
-function Cell({isSwept, isFlagged, children, clickHandler}){
-  let cellStyle = (isSwept) ?
-      styles.sweptCell :
-      styles.cell;
+function Cell({ isSwept, isFlagged, children, clickHandler }) {
+  let cellStyle = isSwept ? styles.sweptCell : styles.cell
 
-  let content = '';
+  let content = ''
   if (isSwept) {
-    content = children;
+    content = children
   } else if (isFlagged) {
-    content = '🚩';
+    content = '🚩'
   }
 
   return (
-      <div
-          style={cellStyle}
-          onClick={clickHandler}
-      >
-        {content}
-      </div>
-  );
+    <div style={cellStyle} onClick={clickHandler}>
+      {content}
+    </div>
+  )
 }
-export default Cell;
+export default Cell
