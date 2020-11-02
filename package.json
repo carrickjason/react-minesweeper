@@ -2,21 +2,16 @@
   "name": "minesweeper-2020",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
-  },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build:tailwind": "tailwind build src/tailwind.css -o src/tailwind.output.css",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
-    "format-watch": "onchange \"**/*.{js,jsx,ts,tsx,md}\" -- prettier --write {{changed}}"
+    "format-watch": "onchange \"**/*.{js,jsx,ts,tsx,md}\" -- prettier --write {{changed}}",
+    "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
+    "start:react": "react-scripts start",
+    "test": "react-scripts test",
+    "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,8 +28,19 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "chokidar-cli": "^2.1.0",
+    "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^1.9.6"
   }
 }

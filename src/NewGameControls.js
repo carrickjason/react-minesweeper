@@ -6,6 +6,7 @@ const NewGameControls = ({ width, height, numMines, dispatch }) => {
   const widthEl = useRef(null)
   const heightEl = useRef(null)
   const numMinesEl = useRef(null)
+
   return (
     <div>
       <form
