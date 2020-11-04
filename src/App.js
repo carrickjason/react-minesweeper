@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import './App.css'
 import { boardReducer, initialState } from './store'
 import NewGameControls from './NewGameControls'
 import GameChrome from './GameChrome'
@@ -15,7 +14,7 @@ function App() {
   )
 
   return (
-    <div className="App">
+    <div className="text-center p-4">
       <Header />
       {content}
     </div>
