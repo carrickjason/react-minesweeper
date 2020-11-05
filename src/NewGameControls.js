@@ -3,11 +3,13 @@ import React, { useRef } from 'react'
 import { FormNumberInput } from './FormNumberInput'
 import { FormInput } from './FormInput'
 import { START_GAME } from './actions/constants'
+import Prando from 'prando'
 
 const NewGameControls = ({ width, height, numMines, dispatch }) => {
   const widthEl = useRef(null)
   const heightEl = useRef(null)
   const numMinesEl = useRef(null)
+  const uuidEl = useRef(null)
 
   return (
     <div className="w-1/2 m-auto">
@@ -57,8 +59,23 @@ const NewGameControls = ({ width, height, numMines, dispatch }) => {
         </button>
       </form>
       OR
-      <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white mt-8">
-        <FormInput label="Enter a UUID:" id="uuid" />
+      <form
+        onSubmit={e => {
+          let prando = new Prando(uuidEl.current.value)
+          dispatch({
+            type: START_GAME,
+            payload: {
+              width: prando.nextInt(1, 20),
+              height: prando.nextInt(1, 20),
+              numMines: prando.nextInt(1, 50),
+              uuid: uuidEl.current.value,
+            },
+          })
+          e.preventDefault()
+        }}
+        className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white mt-8"
+      >
+        <FormInput label="Enter a UUID:" id="uuid" ref={uuidEl} />
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
