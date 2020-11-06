@@ -48,8 +48,10 @@ function Board({ gameGrid, gameOver, gameWon, dispatch, children }) {
   }
 
   return (
-    <div>
-      <main style={styles.board}>{rows}</main>
+    <div className="m-auto">
+      <div className="m-auto" style={styles.board}>
+        {rows}
+      </div>
     </div>
   )
 }

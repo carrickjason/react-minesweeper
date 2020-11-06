@@ -4,7 +4,7 @@ import Board from './Board'
 import { RESTART_GAME } from './actions/constants'
 
 const getStatusMessage = ({ gameLost, gameWon }) => {
-  return gameLost ? 'You lost!' : gameWon ? 'You won!' : 'Have fun!'
+  return gameLost ? 'You lost!' : gameWon ? 'You won!' : null
 }
 
 function getRestartButton(state, dispatch) {
@@ -26,10 +26,9 @@ function GameChrome({ state, dispatch }) {
       <Scoreboard
         delay={state.gameTimerDelay}
         numRemainingFlags={state.numRemainingFlags}
-      >
-        <span>{statusMessage}</span>
-      </Scoreboard>
+      />
       <Board {...state} dispatch={dispatch} />
+      <div className="text-xl m-8">{statusMessage}</div>
       {restartButton}
     </div>
   )
