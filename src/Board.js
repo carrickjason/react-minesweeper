@@ -1,6 +1,6 @@
 import React from 'react'
 import Cell from './Cell'
-import styles from './styles.js'
+import styles from './styles'
 import { SWEEP_CELL } from './actions/constants'
 
 function renderRow(gameGrid, rowIndex, gameLost, dispatch) {

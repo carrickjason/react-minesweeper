@@ -1,19 +1,14 @@
-import { addMines } from './addMines.js'
-import { setMineCounts } from './setMineCounts.js'
+import { makeEmptyGameGrid } from './makeEmptyGameGrid'
+import { addMines } from './addMines'
+import { setMineCounts } from './setMineCounts'
 
-export function makeGameGrid({ height = 10, width = 10, numMines = 5, uuid }) {
-  let grid = []
-  for (let x = 0; x < height; ++x) {
-    grid.push([])
-    for (let y = 0; y < width; ++y) {
-      grid[x].push({
-        hasMine: false,
-        isSwept: false,
-        mineCounts: 0,
-        isFlagged: false,
-      })
-    }
-  }
+export function makeGameGrid({
+  height = 10,
+  width = 10,
+  numMines = 5,
+  uuid,
+} = {}) {
+  const grid = makeEmptyGameGrid(height, width)
 
   addMines(grid, Math.min(numMines, height * width), uuid)
   setMineCounts(grid)

@@ -1,4 +1,4 @@
-import { getRandomNumber } from './getRandomNumber.js'
+import { getRandomNumber } from './getRandomNumber'
 
 describe('getRandomNumber', () => {
   it('returns a number', () => {

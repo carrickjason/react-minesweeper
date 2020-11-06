@@ -1,5 +1,5 @@
-import { getNeighbors } from './getNeighbors.js'
-import { sweepLocation } from './sweepLocation.js'
+import { getNeighbors } from './getNeighbors'
+import { sweepLocation } from './sweepLocation'
 
 export function sweepNeighbors(gameGrid, x, y) {
   let neighbors = getNeighbors(gameGrid, x, y)

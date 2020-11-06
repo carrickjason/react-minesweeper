@@ -1,4 +1,4 @@
-import { getNeighbors } from './getNeighbors.js'
+import { getNeighbors } from './getNeighbors'
 
 export function setMineCounts(grid) {
   const height = grid.length

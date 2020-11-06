@@ -1,4 +1,4 @@
-import { sweepNeighbors } from './sweepNeighbors.js'
+import { sweepNeighbors } from './sweepNeighbors'
 
 export function sweepLocation(gameGrid, x, y) {
   gameGrid[x][y].isSwept = true
