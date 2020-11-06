@@ -7,19 +7,8 @@ const getStatusMessage = ({ gameLost, gameWon }) => {
   return gameLost ? 'You lost!' : gameWon ? 'You won!' : null
 }
 
-function getRestartButton(state, dispatch) {
-  let restartButton = ''
-  if (state.gameOver) {
-    restartButton = (
-      <button onClick={() => dispatch({ type: RESTART_GAME })}>New Game</button>
-    )
-  }
-  return restartButton
-}
-
 function GameChrome({ state, dispatch }) {
   const statusMessage = getStatusMessage(state)
-  let restartButton = getRestartButton(state, dispatch)
 
   return (
     <div>
@@ -28,8 +17,19 @@ function GameChrome({ state, dispatch }) {
         numRemainingFlags={state.numRemainingFlags}
       />
       <Board {...state} dispatch={dispatch} />
-      <div className="text-xl m-8">{statusMessage}</div>
-      {restartButton}
+      {statusMessage && (
+        <div className="text-3xl text-center m-auto bg-gray-400 mt-8 mb-8 p-3 w-1/6 rounded">
+          {statusMessage}
+        </div>
+      )}
+      {state.gameOver && (
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={() => dispatch({ type: RESTART_GAME })}
+        >
+          New Game
+        </button>
+      )}
     </div>
   )
 }
