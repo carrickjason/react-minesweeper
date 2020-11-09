@@ -1,0 +1,3 @@
+describe('getAllPossibleCoordinates', () => {
+  it('passes', () => {})
+})

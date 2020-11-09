@@ -1,39 +1,5 @@
 import React from 'react'
-import Cell from './Cell'
-import styles from './styles'
-import { SWEEP_CELL } from './actions/constants'
-
-function renderRow(gameGrid, rowIndex, gameLost, dispatch, gameOver) {
-  const cols = []
-  for (let y = 0; y < gameGrid[rowIndex].length; ++y) {
-    let cellContents = gameGrid[rowIndex][y].mineCounts || ''
-    if (gameGrid[rowIndex][y].hasMine) {
-      cellContents = gameLost ? '💥' : '🔻'
-    }
-    cols.push(
-      <Cell
-        isSwept={gameOver || gameGrid[rowIndex][y].isSwept}
-        isFlagged={gameGrid[rowIndex][y].isFlagged}
-        clickHandler={e => {
-          e.stopPropagation()
-          dispatch({
-            type: SWEEP_CELL,
-            payload: { x: rowIndex, y, shiftKey: e.shiftKey },
-          })
-        }}
-        key={'cell_' + y}
-      >
-        {cellContents}
-      </Cell>
-    )
-  }
-
-  return (
-    <section style={styles.row} key={'row_' + rowIndex}>
-      {cols}
-    </section>
-  )
-}
+import { Row } from './Row'
 
 function Board({ gameGrid, gameOver, gameWon, dispatch, children }) {
   const gameLost = gameOver && !gameWon
@@ -42,15 +8,21 @@ function Board({ gameGrid, gameOver, gameWon, dispatch, children }) {
     return <div />
   }
 
-  let rows = []
-  for (let x = 0; x < gameGrid.length; ++x) {
-    rows.push(renderRow(gameGrid, x, gameLost, dispatch, gameOver))
-  }
+  const emptyRows = new Array(gameGrid.length).fill(null)
 
   return (
     <div className="m-auto">
-      <div className="m-auto" style={styles.board}>
-        {rows}
+      <div className="m-auto h-340px w-340px">
+        {emptyRows.map((row, index) => (
+          <Row
+            gameGrid={gameGrid}
+            rowIndex={index}
+            gameLost={gameLost}
+            dispatch={dispatch}
+            gameOver={gameOver}
+            key={index}
+          />
+        ))}
       </div>
     </div>
   )

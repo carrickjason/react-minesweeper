@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Cell({ isSwept, isFlagged, children, clickHandler }) {
+export function Cell({ isSwept, isFlagged, children, clickHandler }) {
   const cellStyle = isSwept
     ? 'bg-gray-400 cursor-default'
     : 'hover:bg-blue-500 focus:bg-blue-500 bg-blue-300'
@@ -22,4 +22,3 @@ function Cell({ isSwept, isFlagged, children, clickHandler }) {
     </button>
   )
 }
-export default Cell
