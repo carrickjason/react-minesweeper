@@ -3,7 +3,7 @@ import Cell from './Cell'
 import styles from './styles'
 import { SWEEP_CELL } from './actions/constants'
 
-function renderRow(gameGrid, rowIndex, gameLost, dispatch) {
+function renderRow(gameGrid, rowIndex, gameLost, dispatch, gameOver) {
   const cols = []
   for (let y = 0; y < gameGrid[rowIndex].length; ++y) {
     let cellContents = gameGrid[rowIndex][y].mineCounts || ''
@@ -12,7 +12,7 @@ function renderRow(gameGrid, rowIndex, gameLost, dispatch) {
     }
     cols.push(
       <Cell
-        isSwept={gameLost || gameGrid[rowIndex][y].isSwept}
+        isSwept={gameOver || gameGrid[rowIndex][y].isSwept}
         isFlagged={gameGrid[rowIndex][y].isFlagged}
         clickHandler={e => {
           e.stopPropagation()
@@ -44,7 +44,7 @@ function Board({ gameGrid, gameOver, gameWon, dispatch, children }) {
 
   let rows = []
   for (let x = 0; x < gameGrid.length; ++x) {
-    rows.push(renderRow(gameGrid, x, gameLost, dispatch))
+    rows.push(renderRow(gameGrid, x, gameLost, dispatch, gameOver))
   }
 
   return (

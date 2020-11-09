@@ -1,9 +1,9 @@
 import React from 'react'
 
 function Cell({ isSwept, isFlagged, children, clickHandler }) {
-  let cellStyle = isSwept
-    ? 'h-8 w-8 bg-gray-400 m-px cursor-default'
-    : 'hover:bg-blue-500 focus:bg-blue-500 h-8 w-8 bg-blue-300 m-px'
+  const cellStyle = isSwept
+    ? 'bg-gray-400 cursor-default'
+    : 'hover:bg-blue-500 focus:bg-blue-500 bg-blue-300'
 
   let content = ''
   if (isSwept) {
@@ -13,7 +13,11 @@ function Cell({ isSwept, isFlagged, children, clickHandler }) {
   }
 
   return (
-    <button className={cellStyle} onClick={clickHandler} disabled={isSwept}>
+    <button
+      className={`h-8 w-8 m-px transition-colors duration-200 ${cellStyle}`}
+      onClick={clickHandler}
+      disabled={isSwept}
+    >
       {content}
     </button>
   )
