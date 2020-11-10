@@ -6,13 +6,15 @@ export function addMines(grid, numberOfMinesToAdd, uuid) {
   const width = grid[0].length
   const prando = new Prando(uuid || uuidv4())
 
-  while (numberOfMinesToAdd) {
+  let validNumberOfMinesToAdd = Math.min(height * width, numberOfMinesToAdd)
+
+  while (validNumberOfMinesToAdd) {
     let x = prando.nextInt(0, height - 1)
     let y = prando.nextInt(0, width - 1)
 
     if (!grid[x][y].hasMine) {
       grid[x][y].hasMine = true
-      numberOfMinesToAdd--
+      validNumberOfMinesToAdd--
     }
   }
 }

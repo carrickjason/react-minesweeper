@@ -39,4 +39,21 @@ describe('addMines', () => {
     expect(grid[0][2].hasMine).toBe(true)
     expect(grid[1][0].hasMine).toBe(true)
   })
+
+  it('does not add more mines than there are available spaces', () => {
+    const numberOfMinesToAdd = 20
+    const grid = makeEmptyGameGrid({ height: 4, width: 4 })
+
+    addMines(grid, numberOfMinesToAdd, undefined)
+
+    const minesFound = grid.flat().reduce((totalMinesFound, gridCell) => {
+      if (gridCell.hasMine) {
+        return totalMinesFound + 1
+      }
+
+      return totalMinesFound
+    }, 0)
+
+    expect(minesFound).toBe(16)
+  })
 })
