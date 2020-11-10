@@ -9,7 +9,6 @@ export function makeGameGrid({
   uuid,
 } = {}) {
   const grid = makeEmptyGameGrid(height, width)
-
   addMines(grid, Math.min(numMines, height * width), uuid)
   setMineCounts(grid)
   return grid
