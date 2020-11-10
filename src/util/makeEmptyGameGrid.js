@@ -1,4 +1,4 @@
-export function makeEmptyGameGrid({ height = 10, width = 10 } = {}) {
+export function makeEmptyGameGrid({ height = 10, width = 10 }) {
   let grid = []
   for (let x = 0; x < height; ++x) {
     grid.push([])

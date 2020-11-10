@@ -9,6 +9,7 @@ import {
   START_GAME,
   SWEEP_CELL,
   STOP_TIMER,
+  UPDATE_GAME_SETUP_VALUE,
 } from './actions/constants'
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   height: 10,
   width: 10,
   numMines: 1,
+  uuid: '',
   numRemainingFlags: 0,
   gameTimerDelay: null,
   gameOver: false,
@@ -26,32 +28,40 @@ const initialState = {
 
 function boardReducer(state, action) {
   switch (action.type) {
+    case UPDATE_GAME_SETUP_VALUE:
+      return {
+        ...state,
+        ...action.payload,
+      }
     case RESTART_GAME:
-      return Object.assign({}, state, { gameStarted: false })
+      return { ...state, gameStarted: false }
     case START_GAME:
-      const gameGrid = makeGameGrid(action.payload)
+      const gameGrid = makeGameGrid(state)
       const numRemainingFlags = getNumberRemainingFlags(
         gameGrid,
-        action.payload.numMines
+        state.numMines
       )
-      return Object.assign({}, initialState, action.payload, {
+
+      return {
+        ...state,
         gameStarted: true,
         gameGrid,
         numRemainingFlags,
-      })
+      }
     case SWEEP_CELL:
       const { x, y, shiftKey } = action.payload
       let gameTimerDelay = 1000
       if (shiftKey) {
         const updatedGrid = toggleFlag(state.gameGrid, x, y)
-        return Object.assign({}, state, {
+        return {
+          ...state,
           gameGrid: updatedGrid,
           numRemainingFlags: getNumberRemainingFlags(
             updatedGrid,
             state.numMines
           ),
           gameTimerDelay,
-        })
+        }
       } else {
         const updatedGrid = sweepLocation(state.gameGrid, x, y)
         const gameLost = isGameLost(updatedGrid)
@@ -60,16 +70,17 @@ function boardReducer(state, action) {
         if (gameOver) {
           gameTimerDelay = null
         }
-        return Object.assign({}, state, {
+        return {
+          ...state,
           gameGrid: updatedGrid,
           gameOver,
           gameLost,
           gameWon,
           gameTimerDelay,
-        })
+        }
       }
     case STOP_TIMER:
-      return Object.assign({}, state, { gameTimerComponent: null })
+      return { ...state, gameTimerComponent: null }
     default:
       return state
   }
