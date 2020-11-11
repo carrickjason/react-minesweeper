@@ -1,11 +1,13 @@
-import React, { useRef } from 'react'
+import React from 'react'
 
 import { FormNumberInput } from './FormNumberInput'
 import { FormInput } from './FormInput'
+import { Button } from './Button'
 import { START_GAME, UPDATE_GAME_SETUP_VALUE } from './actions/constants'
 import Prando from 'prando'
 
 const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
+  const maxNumMines = width * height
   const changeHandler = e => {
     const { name, value } = e.target
     dispatch({
@@ -54,12 +56,9 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           value={numMines}
           name="numMines"
         />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
+        <Button type="submit" disabled={numMines > maxNumMines}>
           Create New Game
-        </button>
+        </Button>
       </form>
       OR
       <form
@@ -84,12 +83,9 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           value={uuid}
           onChange={changeHandler}
         />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
+        <Button type="submit" disabled={!uuid}>
           Start Game
-        </button>
+        </Button>
       </form>
     </div>
   )
