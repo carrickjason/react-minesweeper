@@ -28,7 +28,7 @@ export function Row({ gameGrid, rowIndex, gameLost, dispatch, gameOver }) {
   }
 
   return (
-    <section className="flex justify-between" key={'row_' + rowIndex}>
+    <section className="inline-flex justify-between" key={'row_' + rowIndex}>
       {cols}
     </section>
   )

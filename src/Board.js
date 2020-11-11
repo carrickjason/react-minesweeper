@@ -12,7 +12,7 @@ function Board({ gameGrid, gameOver, gameWon, dispatch, children }) {
 
   return (
     <div className="m-auto">
-      <div className="m-auto h-340px w-340px">
+      <div className="m-auto inline-flex flex-col">
         {emptyRows.map((row, index) => (
           <Row
             gameGrid={gameGrid}

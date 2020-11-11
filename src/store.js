@@ -34,7 +34,7 @@ function boardReducer(state, action) {
         ...action.payload,
       }
     case RESTART_GAME:
-      return { ...state, gameStarted: false }
+      return { ...initialState, gameStarted: false }
     case START_GAME:
       const gameGrid = makeGameGrid(state)
       const numRemainingFlags = getNumberRemainingFlags(

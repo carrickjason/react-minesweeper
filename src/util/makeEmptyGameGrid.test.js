@@ -20,8 +20,8 @@ describe('makeEmptyGameGrid', () => {
     expect(grid).toEqual(expectedGridResult)
   })
 
-  it('defaults to a 10 by 10 grid if no arguments are provided', () => {
-    const grid = makeEmptyGameGrid()
+  it('defaults to a 10 by 10 grid if an empty object is provided', () => {
+    const grid = makeEmptyGameGrid({})
 
     const expectedCellResult = {
       hasMine: false,
@@ -154,5 +154,9 @@ describe('makeEmptyGameGrid', () => {
     ]
 
     expect(grid).toEqual(expectedGridResult)
+  })
+
+  it('throws an error if no arguments are provided', () => {
+    expect(() => makeEmptyGameGrid()).toThrow()
   })
 })

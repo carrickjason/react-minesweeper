@@ -13,6 +13,7 @@ describe('FormNumberInput', () => {
         min={1}
         max={20}
         value={1}
+        onChange={() => {}}
       />
     )
     const input = screen.getByLabelText(numColumns)
