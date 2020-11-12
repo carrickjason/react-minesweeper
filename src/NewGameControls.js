@@ -37,6 +37,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           onChange={changeHandler}
           value={width}
           name="width"
+          required
         />
         <FormNumberInput
           label="Number of Rows:"
@@ -46,19 +47,19 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           onChange={changeHandler}
           value={height}
           name="height"
+          required
         />
         <FormNumberInput
           label="Number of Mines:"
           id="numMines"
           min={1}
-          max={50}
+          max={maxNumMines}
           onChange={changeHandler}
           value={numMines}
           name="numMines"
+          required
         />
-        <Button type="submit" disabled={numMines > maxNumMines}>
-          Create New Game
-        </Button>
+        <Button type="submit">Create New Game</Button>
       </form>
       OR
       <form
@@ -82,10 +83,9 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           name="uuid"
           value={uuid}
           onChange={changeHandler}
+          required
         />
-        <Button type="submit" disabled={!uuid}>
-          Start Game
-        </Button>
+        <Button type="submit">Start Game</Button>
       </form>
     </div>
   )
