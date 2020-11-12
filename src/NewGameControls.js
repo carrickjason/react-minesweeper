@@ -10,7 +10,7 @@ import {
 } from './actions/constants'
 
 const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
-  const maxNumMines = width * height
+  const maxNumMines = width * height - 1
   const changeHandler = e => {
     const { name, value } = e.target
     dispatch({

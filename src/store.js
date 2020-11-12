@@ -56,7 +56,7 @@ function boardReducer(state, action) {
       const width = prando.nextInt(1, 20)
       const height = prando.nextInt(1, 20)
 
-      const maxNumMines = height * width
+      const maxNumMines = height * width - 1
       const numMines = prando.nextInt(1, maxNumMines)
 
       const gridSettings = {
