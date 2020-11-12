@@ -1,5 +1,6 @@
 export const RESTART_GAME = 'restartGame'
 export const START_GAME = 'startGame'
+export const START_GAME_FROM_UUID = 'startGameFromUuid'
 export const SWEEP_CELL = 'sweepCell'
 export const STOP_TIMER = 'stopTimer'
 export const UPDATE_GAME_SETUP_VALUE = 'updateGameSetupValue'

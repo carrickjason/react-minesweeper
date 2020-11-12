@@ -3,8 +3,11 @@ import React from 'react'
 import { FormNumberInput } from './FormNumberInput'
 import { FormInput } from './FormInput'
 import { Button } from './Button'
-import { START_GAME, UPDATE_GAME_SETUP_VALUE } from './actions/constants'
-import Prando from 'prando'
+import {
+  START_GAME,
+  START_GAME_FROM_UUID,
+  UPDATE_GAME_SETUP_VALUE,
+} from './actions/constants'
 
 const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
   const maxNumMines = width * height
@@ -64,16 +67,8 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
       OR
       <form
         onSubmit={e => {
-          let prando = new Prando(uuid)
-          dispatch({
-            type: START_GAME,
-            payload: {
-              width: prando.nextInt(1, 20),
-              height: prando.nextInt(1, 20),
-              numMines: prando.nextInt(1, 50),
-            },
-          })
           e.preventDefault()
+          dispatch({ type: START_GAME_FROM_UUID })
         }}
         className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white mt-8"
       >

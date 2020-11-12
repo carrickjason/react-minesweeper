@@ -1,3 +1,5 @@
+import Prando from 'prando'
+
 import { makeGameGrid } from './util/makeGameGrid'
 import { getNumberRemainingFlags } from './util/getNumberRemainingFlags'
 import { toggleFlag } from './util/toggleFlag'
@@ -7,6 +9,7 @@ import { isGameWon } from './util/isGameWon'
 import {
   RESTART_GAME,
   START_GAME,
+  START_GAME_FROM_UUID,
   SWEEP_CELL,
   STOP_TIMER,
   UPDATE_GAME_SETUP_VALUE,
@@ -48,6 +51,34 @@ function boardReducer(state, action) {
         gameGrid,
         numRemainingFlags,
       }
+    case START_GAME_FROM_UUID: {
+      const prando = new Prando(state.uuid)
+      const width = prando.nextInt(1, 20)
+      const height = prando.nextInt(1, 20)
+
+      const maxNumMines = height * width
+      const numMines = prando.nextInt(1, maxNumMines)
+
+      const gridSettings = {
+        height,
+        width,
+        numMines,
+        uuid: state.uuid,
+      }
+
+      const gameGrid = makeGameGrid(gridSettings)
+      const numRemainingFlags = getNumberRemainingFlags(
+        gameGrid,
+        state.numMines
+      )
+
+      return {
+        ...state,
+        gameStarted: true,
+        gameGrid,
+        numRemainingFlags,
+      }
+    }
     case SWEEP_CELL:
       const { x, y, shiftKey } = action.payload
       let gameTimerDelay = 1000
