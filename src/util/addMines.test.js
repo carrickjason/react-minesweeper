@@ -1,5 +1,6 @@
 import { addMines } from './addMines'
 import { makeEmptyGameGrid } from './makeEmptyGameGrid'
+import { getGridMineCount } from '../testUtils/getGridMineCount'
 
 describe('addMines', () => {
   it('adds the appropriate amount of mines to the grid', () => {
@@ -26,13 +27,7 @@ describe('addMines', () => {
 
     addMines(grid, numberOfMinesToAdd, uuid)
 
-    const minesFound = grid.flat().reduce((totalMinesFound, gridCell) => {
-      if (gridCell.hasMine) {
-        return totalMinesFound + 1
-      }
-
-      return totalMinesFound
-    }, 0)
+    const minesFound = getGridMineCount(grid)
 
     expect(minesFound).toBe(3)
     expect(grid[0][1].hasMine).toBe(true)
@@ -46,13 +41,7 @@ describe('addMines', () => {
 
     addMines(grid, numberOfMinesToAdd, undefined)
 
-    const minesFound = grid.flat().reduce((totalMinesFound, gridCell) => {
-      if (gridCell.hasMine) {
-        return totalMinesFound + 1
-      }
-
-      return totalMinesFound
-    }, 0)
+    const minesFound = getGridMineCount(grid)
 
     expect(minesFound).toBe(16)
   })
