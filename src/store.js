@@ -83,7 +83,11 @@ function boardReducer(state, action) {
       const { x, y, shiftKey } = action.payload
       let gameTimerDelay = 1000
       if (shiftKey) {
-        const updatedGrid = toggleFlag(state.gameGrid, x, y)
+        const canToggleFlag =
+          state.numRemainingFlags > 0 || state.gameGrid[x][y].isFlagged
+        const updatedGrid = canToggleFlag
+          ? toggleFlag(state.gameGrid, x, y)
+          : state.gameGrid
         return {
           ...state,
           gameGrid: updatedGrid,
