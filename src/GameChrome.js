@@ -1,6 +1,7 @@
 import React from 'react'
 import Scoreboard from './Scoreboard'
 import Board from './Board'
+import { Button } from './Button'
 import { RESTART_GAME } from './actions/constants'
 
 const getStatusMessage = ({ gameLost, gameWon }) => {
@@ -18,18 +19,16 @@ function GameChrome({ state, dispatch }) {
       />
       <Board {...state} dispatch={dispatch} />
       {statusMessage && (
-        <div className="text-3xl text-center m-auto bg-gray-400 mt-8 mb-8 p-3 w-1/6 rounded">
+        <div className="text-3xl text-center m-auto bg-gray-400 mt-8 p-3 w-1/6 rounded">
           {statusMessage}
         </div>
       )}
-      {state.gameOver && (
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={() => dispatch({ type: RESTART_GAME })}
-        >
-          New Game
-        </button>
-      )}
+      <Button
+        additionalClasses="mt-8"
+        onClick={() => dispatch({ type: RESTART_GAME })}
+      >
+        {state.gameOver ? 'New Game' : 'Quit'}
+      </Button>
     </div>
   )
 }
