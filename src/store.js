@@ -98,7 +98,7 @@ function boardReducer(state, action) {
       } else {
         const updatedGrid = sweepLocation(state.gameGrid, x, y)
         const gameLost = isGameLost(updatedGrid)
-        const gameWon = isGameWon(updatedGrid, state.numMines)
+        const gameWon = !gameLost && isGameWon(updatedGrid, state.numMines)
         const gameOver = gameLost || gameWon
         if (gameOver) {
           gameTimerDelay = null
