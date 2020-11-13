@@ -53,8 +53,8 @@ function boardReducer(state, action) {
       }
     case START_GAME_FROM_UUID: {
       const prando = new Prando(state.uuid)
-      const width = prando.nextInt(1, 20)
-      const height = prando.nextInt(1, 20)
+      const width = prando.nextInt(2, 20)
+      const height = prando.nextInt(2, 20)
 
       const maxNumMines = height * width - 1
       const numMines = prando.nextInt(1, maxNumMines)
@@ -67,13 +67,11 @@ function boardReducer(state, action) {
       }
 
       const gameGrid = makeGameGrid(gridSettings)
-      const numRemainingFlags = getNumberRemainingFlags(
-        gameGrid,
-        state.numMines
-      )
+      const numRemainingFlags = getNumberRemainingFlags(gameGrid, numMines)
 
       return {
         ...state,
+        ...gridSettings,
         gameStarted: true,
         gameGrid,
         numRemainingFlags,

@@ -35,7 +35,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
         <FormNumberInput
           label="Number of Columns:"
           id="width"
-          min={1}
+          min={2}
           max={20}
           onChange={changeHandler}
           value={width}
@@ -45,7 +45,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
         <FormNumberInput
           label="Number of Rows:"
           id="height"
-          min={1}
+          min={2}
           max={20}
           onChange={changeHandler}
           value={height}
