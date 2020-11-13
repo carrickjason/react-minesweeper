@@ -52,5 +52,14 @@
     "prettier": "^2.1.2",
     "react-scripts": "4.0.0",
     "tailwindcss": "^1.9.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.test.{js,jsx,ts,tsx}",
+      "!src/serviceWorker.js",
+      "!src/testUtils/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ]
   }
 }
