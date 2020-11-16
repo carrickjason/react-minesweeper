@@ -7,12 +7,12 @@ describe('App', () => {
 
     expect(screen.getByText('Minesweeper')).toBeInTheDocument()
 
-    expect(screen.getByText('Number of Columns:')).toBeInTheDocument()
-    expect(screen.getByText('Number of Rows:')).toBeInTheDocument()
-    expect(screen.getByText('Number of Mines:')).toBeInTheDocument()
+    expect(screen.getByText('Columns')).toBeInTheDocument()
+    expect(screen.getByText('Rows')).toBeInTheDocument()
+    expect(screen.getByText('Mines')).toBeInTheDocument()
     expect(screen.getByText('Create New Game')).toBeInTheDocument()
 
-    expect(screen.getByText('Enter a UUID:')).toBeInTheDocument()
+    expect(screen.getByText('Or enter a UUID')).toBeInTheDocument()
     expect(screen.getByText('Start Game')).toBeInTheDocument()
   })
 

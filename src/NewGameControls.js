@@ -24,7 +24,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
   return (
     <div className="w-1/2 m-auto">
       <form
-        className="shadow-md rounded px-8 pt-6 pb-8 mb-8 bg-white"
+        className="px-8 pt-6 pb-8 mb-8"
         onSubmit={e => {
           e.preventDefault()
           dispatch({
@@ -32,48 +32,49 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           })
         }}
       >
-        <FormNumberInput
-          label="Number of Columns:"
-          id="width"
-          min={2}
-          max={20}
-          onChange={changeHandler}
-          value={width}
-          name="width"
-          required
-        />
-        <FormNumberInput
-          label="Number of Rows:"
-          id="height"
-          min={2}
-          max={20}
-          onChange={changeHandler}
-          value={height}
-          name="height"
-          required
-        />
-        <FormNumberInput
-          label="Number of Mines:"
-          id="numMines"
-          min={1}
-          max={maxNumMines}
-          onChange={changeHandler}
-          value={numMines}
-          name="numMines"
-          required
-        />
+        <div className="flex text-center m-auto justify-around mb-8">
+          <FormNumberInput
+            label="Columns"
+            id="width"
+            min={2}
+            max={20}
+            onChange={changeHandler}
+            value={width}
+            name="width"
+            required
+          />
+          <FormNumberInput
+            label="Rows"
+            id="height"
+            min={2}
+            max={20}
+            onChange={changeHandler}
+            value={height}
+            name="height"
+            required
+          />
+          <FormNumberInput
+            label="Mines"
+            id="numMines"
+            min={1}
+            max={maxNumMines}
+            onChange={changeHandler}
+            value={numMines}
+            name="numMines"
+            required
+          />
+        </div>
         <Button type="submit">Create New Game</Button>
       </form>
-      OR
       <form
         onSubmit={e => {
           e.preventDefault()
           dispatch({ type: START_GAME_FROM_UUID })
         }}
-        className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-white mt-8"
+        className="px-8 pt-6 pb-8 mb-4 mt-8"
       >
         <FormInput
-          label="Enter a UUID:"
+          label="Or enter a UUID"
           id="uuid"
           name="uuid"
           value={uuid}

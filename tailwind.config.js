@@ -12,14 +12,16 @@ module.exports = {
     cursor: ['responsive', 'hover', 'focus', 'disabled'],
   },
   theme: {
-    color: {
-      magenta,
-      lightBlue,
-      yellow,
-      purple,
-      red,
-      blue,
-      darkBlue,
+    extend: {
+      colors: {
+        magenta,
+        lightBlue,
+        yellow,
+        purple,
+        red,
+        blue,
+        darkBlue,
+      },
     },
   },
 }
