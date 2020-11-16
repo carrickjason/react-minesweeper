@@ -5,7 +5,7 @@ describe('App', () => {
   it('renders the new game controls when a game has not been started yet', () => {
     render(<App />)
 
-    expect(screen.getByText('React Minesweeper')).toBeInTheDocument()
+    expect(screen.getByText('Minesweeper')).toBeInTheDocument()
 
     expect(screen.getByText('Number of Columns:')).toBeInTheDocument()
     expect(screen.getByText('Number of Rows:')).toBeInTheDocument()
@@ -20,7 +20,7 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getByText('Create New Game'))
 
-    expect(screen.getByText('React Minesweeper')).toBeInTheDocument()
+    expect(screen.getByText('Minesweeper')).toBeInTheDocument()
 
     expect(screen.getByText('Flags Left: 1')).toBeInTheDocument()
     expect(screen.getByText('Game Time:')).toBeInTheDocument()
