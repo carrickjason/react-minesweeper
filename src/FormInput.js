@@ -1,7 +1,14 @@
 import React from 'react'
 
-export const FormInput = ({ label, id, value, onChange, ...rest }) => (
-  <div className="text-center flex-grow m-2">
+export const FormInput = ({
+  label,
+  id,
+  value,
+  onChange,
+  additionalContainerClasses,
+  ...rest
+}) => (
+  <div className={`text-center flex-grow m-2 ${additionalContainerClasses}`}>
     <div className="">
       <label
         className="block mb-2 text-lg text-lightBlue tracking-widest"

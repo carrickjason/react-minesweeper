@@ -22,7 +22,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
   }
 
   return (
-    <div className="w-1/2 m-auto">
+    <div className="lg:w-1/2 m-auto w-auto">
       <form
         className="px-8 pt-6 pb-8 mb-8"
         onSubmit={e => {
@@ -42,6 +42,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
             value={width}
             name="width"
             required
+            additionalContainerClasses="w-10"
           />
           <FormNumberInput
             label="Rows"
@@ -52,6 +53,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
             value={height}
             name="height"
             required
+            additionalContainerClasses="w-10"
           />
           <FormNumberInput
             label="Mines"
@@ -62,6 +64,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
             value={numMines}
             name="numMines"
             required
+            additionalContainerClasses="w-10"
           />
         </div>
         <Button type="submit">Play</Button>
