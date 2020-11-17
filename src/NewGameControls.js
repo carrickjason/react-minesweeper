@@ -32,7 +32,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           })
         }}
       >
-        <div className="flex text-center m-auto justify-around mb-8">
+        <div className="flex text-center m-auto justify-around mb-12">
           <FormNumberInput
             label="Columns"
             id="width"
@@ -64,7 +64,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
             required
           />
         </div>
-        <Button type="submit">Create New Game</Button>
+        <Button type="submit">Play</Button>
       </form>
       <form
         onSubmit={e => {
@@ -81,7 +81,9 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
           onChange={changeHandler}
           required
         />
-        <Button type="submit">Start Game</Button>
+        <Button type="submit" buttonStyle="secondary" additionalClasses="mt-8">
+          Start
+        </Button>
       </form>
     </div>
   )

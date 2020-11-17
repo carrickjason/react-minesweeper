@@ -10,15 +10,15 @@ describe('App', () => {
     expect(screen.getByText('Columns')).toBeInTheDocument()
     expect(screen.getByText('Rows')).toBeInTheDocument()
     expect(screen.getByText('Mines')).toBeInTheDocument()
-    expect(screen.getByText('Create New Game')).toBeInTheDocument()
+    expect(screen.getByText('Play')).toBeInTheDocument()
 
     expect(screen.getByText('Or enter a UUID')).toBeInTheDocument()
-    expect(screen.getByText('Start Game')).toBeInTheDocument()
+    expect(screen.getByText('Start')).toBeInTheDocument()
   })
 
   it('renders the game board when a game is in progress', () => {
     render(<App />)
-    fireEvent.click(screen.getByText('Create New Game'))
+    fireEvent.click(screen.getByText('Play'))
 
     expect(screen.getByText('Minesweeper')).toBeInTheDocument()
 

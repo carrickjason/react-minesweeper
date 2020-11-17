@@ -10,6 +10,9 @@ module.exports = {
   variants: {
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
     cursor: ['responsive', 'hover', 'focus', 'disabled'],
+    borderColor: ['responsive', 'hover', 'focus', 'disabled'],
+    borderWidth: ['responsive', 'hover', 'focus', 'disabled'],
+    padding: ['responsive', 'hover', 'focus', 'disabled'],
   },
   theme: {
     extend: {
@@ -21,6 +24,9 @@ module.exports = {
         red,
         blue,
         darkBlue,
+      },
+      borderWidth: {
+        12: '12px',
       },
     },
   },

@@ -1,9 +1,21 @@
 import React from 'react'
 
-export function Button({ children, additionalClasses, ...rest }) {
+const primaryClasses =
+  'bg-yellow text-darkBlue rounded border-b-4 border-magenta px-8 py-4 text-2xl focus:outline-none focus:border-b-12 focus:pb-2 hover:border-b-12 hover:pb-2'
+const secondaryClasses =
+  'text-yellow text-lg pb-1 focus:border-b-4 focus:border-yellow hover:border-b-4 hover:border-yellow focus:outline-none'
+
+export function Button({
+  buttonStyle = 'primary',
+  children,
+  additionalClasses,
+  ...rest
+}) {
   return (
     <button
-      className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-default ${additionalClasses}`}
+      className={`${
+        buttonStyle === 'primary' ? primaryClasses : secondaryClasses
+      } transition-all duration-100 uppercase font-black tracking-widest ${additionalClasses}`}
       {...rest}
     >
       {children}
