@@ -96,4 +96,19 @@ describe('App', () => {
     expect(screen.getByText('Or enter a UUID')).toBeInTheDocument()
     expect(screen.getByText('Start')).toBeInTheDocument()
   })
+
+  it('allows you to flag and unflag cells', () => {
+    render(<App />)
+
+    fireEvent.click(screen.getByText('Play'))
+
+    fireEvent.click(screen.getAllByTestId('grid-cell')[0], { shiftKey: true })
+    expect(screen.getByText('🚩')).toBeInTheDocument()
+
+    fireEvent.click(screen.getAllByTestId('grid-cell')[0])
+    expect(screen.getByText('🚩')).toBeInTheDocument()
+
+    fireEvent.click(screen.getAllByTestId('grid-cell')[0], { shiftKey: true })
+    expect(screen.queryByText('🚩')).not.toBeInTheDocument()
+  })
 })

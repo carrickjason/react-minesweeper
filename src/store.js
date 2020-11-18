@@ -11,7 +11,6 @@ import {
   START_GAME,
   START_GAME_FROM_UUID,
   SWEEP_CELL,
-  STOP_TIMER,
   UPDATE_GAME_SETUP_VALUE,
 } from './actions/constants'
 
@@ -116,8 +115,6 @@ function boardReducer(state, action) {
           gameTimerDelay,
         }
       }
-    case STOP_TIMER:
-      return { ...state, gameTimerComponent: null }
     default:
       return state
   }

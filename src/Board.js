@@ -1,13 +1,8 @@
 import React from 'react'
 import { Row } from './Row'
 
-function Board({ gameGrid, gameOver, gameWon, dispatch, children }) {
+function Board({ gameGrid, gameOver, gameWon, dispatch }) {
   const gameLost = gameOver && !gameWon
-
-  if (gameGrid === null) {
-    return <div />
-  }
-
   const emptyRows = new Array(gameGrid.length).fill(null)
 
   return (

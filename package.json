@@ -57,6 +57,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.test.{js,jsx,ts,tsx}",
+      "!src/index.js",
       "!src/serviceWorker.js",
       "!src/testUtils/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
