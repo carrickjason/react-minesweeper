@@ -13,7 +13,7 @@ function useInterval(callback, delay) {
     function tick() {
       savedCallback.current()
     }
-    if (delay !== null) {
+    if (delay != null) {
       let id = setInterval(tick, delay)
       return () => clearInterval(id)
     }
@@ -33,4 +33,5 @@ function Timer({ delay }) {
   }, [delay])
   return <span>{ticks}</span>
 }
+
 export default Timer

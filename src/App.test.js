@@ -102,13 +102,18 @@ describe('App', () => {
 
     fireEvent.click(screen.getByText('Play'))
 
-    fireEvent.click(screen.getAllByTestId('grid-cell')[0], { shiftKey: true })
+    const gridCells = screen.getAllByTestId('grid-cell')
+
+    fireEvent.click(gridCells[0], { shiftKey: true })
     expect(screen.getByText('🚩')).toBeInTheDocument()
 
-    fireEvent.click(screen.getAllByTestId('grid-cell')[0])
+    fireEvent.click(gridCells[1], { shiftKey: true })
+    expect(screen.getAllByText('🚩').length).toBe(1)
+
+    fireEvent.click(gridCells[0])
     expect(screen.getByText('🚩')).toBeInTheDocument()
 
-    fireEvent.click(screen.getAllByTestId('grid-cell')[0], { shiftKey: true })
+    fireEvent.click(gridCells[0], { shiftKey: true })
     expect(screen.queryByText('🚩')).not.toBeInTheDocument()
   })
 })
