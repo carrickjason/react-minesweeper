@@ -3,10 +3,13 @@ import Timer from './Timer'
 
 const Scoreboard = ({ numRemainingFlags, delay }) => {
   return (
-    <div className="text-xl text-center flex w-1/2 m-auto bg-gray-400 mb-12 divide-x divide-gray-800 divide-solid p-3 rounded">
-      <p className="w-1/2">Flags Left: {numRemainingFlags}</p>
-      <p className="w-1/2">
-        Game Time: <Timer delay={delay} />
+    <div className="text-xl text-center text-lightBlue flex w-1/2 m-auto mb-12 justify-center">
+      <p className="flex items-center justify-center w-1/3 mr-8 bg-darkBlue rounded p-4">
+        <span className="text-2xl mr-8">{numRemainingFlags}</span>{' '}
+        {numRemainingFlags === 1 ? 'Flag' : 'Flags'} Left
+      </p>
+      <p className="flex items-center justify-center w-1/3 ml-8 bg-darkBlue rounded p-4">
+        Game Time <Timer delay={delay} />
       </p>
     </div>
   )

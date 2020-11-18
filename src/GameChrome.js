@@ -24,10 +24,15 @@ function GameChrome({ state, dispatch }) {
         </div>
       )}
       <Button
+        buttonStyle={state.gameOver ? 'primary' : 'secondary'}
         additionalClasses="mt-8"
         onClick={() => dispatch({ type: RESTART_GAME })}
       >
-        {state.gameOver ? 'New Game' : 'Quit'}
+        {state.gameOver
+          ? state.gameLost
+            ? 'Retry'
+            : 'Play Again'
+          : 'Quit Game'}
       </Button>
     </div>
   )

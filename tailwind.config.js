@@ -5,6 +5,8 @@ const purple = '#c04df9'
 const red = '#ff3f3f'
 const blue = '#272F3E'
 const darkBlue = '#1B2434'
+const white = '#DBEAF8'
+const eggshell = '#B7CDE2'
 
 module.exports = {
   variants: {
@@ -24,9 +26,14 @@ module.exports = {
         red,
         blue,
         darkBlue,
+        white,
+        eggshell,
       },
       borderWidth: {
         12: '12px',
+      },
+      spacing: {
+        sm: '2px',
       },
     },
   },
