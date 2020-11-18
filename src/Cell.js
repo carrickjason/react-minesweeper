@@ -19,6 +19,7 @@ export function Cell({ isSwept, isFlagged, children, clickHandler }) {
       style={isSwept ? { color: colorMap[content] } : undefined}
       onClick={clickHandler}
       disabled={isSwept}
+      data-testid="grid-cell"
     >
       {content}
     </button>
