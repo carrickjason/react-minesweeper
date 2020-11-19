@@ -10,11 +10,9 @@ const eggshell = '#B7CDE2'
 
 module.exports = {
   variants: {
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    cursor: ['responsive', 'hover', 'focus', 'disabled'],
-    borderColor: ['responsive', 'hover', 'focus', 'disabled'],
-    borderWidth: ['responsive', 'hover', 'focus', 'disabled'],
-    padding: ['responsive', 'hover', 'focus', 'disabled'],
+    borderColor: ['hover', 'focus'],
+    borderWidth: ['hover', 'focus'],
+    padding: ['hover', 'focus'],
   },
   theme: {
     extend: {
