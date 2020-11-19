@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "react-scripts build",
+    "build": "npm-run-all build:tailwind build:react",
+    "build:react": "react-scripts build",
     "build:tailwind": "tailwind build src/tailwind.css -o src/tailwind.output.css",
     "commit": "git-cz",
     "eject": "react-scripts eject",
