@@ -7,7 +7,7 @@ export function Header() {
     <>
       <h1 className="sr-only">Minesweeper</h1>
       <img
-        className="m-auto mt-8 mb-16 lg:w-1/2 w-2/3"
+        className="m-auto mt-8 mb-16 lg:w-1/4 md:w-1/3 w-2/3"
         src={headerLogo}
         alt=""
       />
