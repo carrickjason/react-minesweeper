@@ -3,9 +3,9 @@ export const twoMines = 'yellow'
 export const threeMines = 'magenta'
 export const fourMines = 'red'
 export const fiveMines = 'purple'
-export const sixMines = 'darkcyan'
-export const sevenMines = 'black'
-export const eightMines = 'darkslategrey'
+export const sixMines = 'purple'
+export const sevenMines = 'purple'
+export const eightMines = 'purple'
 
 export const colorMap = {
   1: oneMine,

@@ -20,7 +20,7 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getByText('Play'))
 
-    expect(screen.getByText('Flag Left')).toBeInTheDocument()
+    expect(screen.getByText('Flags Left')).toBeInTheDocument()
     expect(screen.getByText('Game Time')).toBeInTheDocument()
     expect(screen.getByText('Quit Game')).toBeInTheDocument()
     expect(screen.getByAltText('Minesweeper Logo')).toBeInTheDocument()
@@ -98,6 +98,7 @@ describe('App', () => {
   it('allows you to flag and unflag cells', () => {
     render(<App />)
 
+    fireEvent.change(screen.getByLabelText('Mines'), { target: { value: '1' } })
     fireEvent.click(screen.getByText('Play'))
 
     const gridCells = screen.getAllByTestId('grid-cell')

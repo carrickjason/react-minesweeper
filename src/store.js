@@ -19,7 +19,7 @@ const initialState = {
   gameStarted: false,
   height: 10,
   width: 10,
-  numMines: 1,
+  numMines: 10,
   uuid: '',
   numRemainingFlags: 0,
   gameTimerDelay: null,
