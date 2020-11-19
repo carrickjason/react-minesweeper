@@ -105,15 +105,15 @@ describe('App', () => {
     const gridCells = screen.getAllByTestId('grid-cell')
 
     fireEvent.click(gridCells[0], { shiftKey: true })
-    expect(screen.getByText('🚩')).toBeInTheDocument()
+    expect(screen.getByAltText('Flag')).toBeInTheDocument()
 
     fireEvent.click(gridCells[1], { shiftKey: true })
-    expect(screen.getAllByText('🚩').length).toBe(1)
+    expect(screen.getAllByAltText('Flag').length).toBe(1)
 
     fireEvent.click(gridCells[0])
-    expect(screen.getByText('🚩')).toBeInTheDocument()
+    expect(screen.getByAltText('Flag')).toBeInTheDocument()
 
     fireEvent.click(gridCells[0], { shiftKey: true })
-    expect(screen.queryByText('🚩')).not.toBeInTheDocument()
+    expect(screen.queryByAltText('Flag')).not.toBeInTheDocument()
   })
 })
