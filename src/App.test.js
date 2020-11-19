@@ -20,11 +20,10 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getByText('Play'))
 
-    expect(screen.getByText('Minesweeper')).toBeInTheDocument()
-
     expect(screen.getByText('Flag Left')).toBeInTheDocument()
     expect(screen.getByText('Game Time')).toBeInTheDocument()
     expect(screen.getByText('Quit Game')).toBeInTheDocument()
+    expect(screen.getByAltText('Minesweeper Logo')).toBeInTheDocument()
   })
 
   it('renders the game board when you have started a game by clicking the Start button', () => {
@@ -35,11 +34,10 @@ describe('App', () => {
     })
     fireEvent.click(screen.getByText('Start'))
 
-    expect(screen.getByText('Minesweeper')).toBeInTheDocument()
-
     expect(screen.getByText('Flags Left')).toBeInTheDocument()
     expect(screen.getByText('Game Time')).toBeInTheDocument()
     expect(screen.getByText('Quit Game')).toBeInTheDocument()
+    expect(screen.getByAltText('Minesweeper Logo')).toBeInTheDocument()
   })
 
   it('can be played all the way until you lose', () => {
@@ -52,7 +50,7 @@ describe('App', () => {
 
     fireEvent.click(screen.getAllByTestId('grid-cell')[0])
 
-    expect(screen.getByText('You lost!')).toBeInTheDocument()
+    expect(screen.getByAltText('You lost')).toBeInTheDocument()
     expect(screen.getByText('Retry')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Retry'))
@@ -81,7 +79,7 @@ describe('App', () => {
 
     safeCells.forEach(cellIndex => fireEvent.click(gridCells[cellIndex]))
 
-    expect(screen.getByText('You won!')).toBeInTheDocument()
+    expect(screen.getByAltText('You win')).toBeInTheDocument()
     expect(screen.getByText('Play Again')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Play Again'))

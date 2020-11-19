@@ -3,26 +3,31 @@ import Scoreboard from './Scoreboard'
 import Board from './Board'
 import { Button } from './Button'
 import { RESTART_GAME } from './actions/constants'
+import youLost from './images/you-lost.svg'
+import youWin from './images/you-win.svg'
+import minesweeperLogo from './images/minesweeper-logo.svg'
+
+const statusImageClass = `m-auto my-12`
 
 const getStatusMessage = ({ gameLost, gameWon }) => {
-  return gameLost ? 'You lost!' : gameWon ? 'You won!' : null
+  return gameLost ? (
+    <img src={youLost} alt="You lost" className={statusImageClass} />
+  ) : gameWon ? (
+    <img src={youWin} alt="You win" className={statusImageClass} />
+  ) : null
 }
 
 function GameChrome({ state, dispatch }) {
   const statusMessage = getStatusMessage(state)
 
   return (
-    <div>
+    <div className="lg:pt-12 pt-4">
       <Scoreboard
         delay={state.gameTimerDelay}
         numRemainingFlags={state.numRemainingFlags}
       />
       <Board {...state} dispatch={dispatch} />
-      {statusMessage && (
-        <div className="text-3xl text-center m-auto bg-gray-400 mt-8 p-3 w-1/6 rounded">
-          {statusMessage}
-        </div>
-      )}
+      {statusMessage}
       <Button
         buttonStyle={state.gameOver ? 'primary' : 'secondary'}
         additionalClasses="mt-8"
@@ -34,6 +39,13 @@ function GameChrome({ state, dispatch }) {
             : 'Play Again'
           : 'Quit Game'}
       </Button>
+      {!state.gameOver && (
+        <img
+          src={minesweeperLogo}
+          alt="Minesweeper Logo"
+          className="m-auto mt-12"
+        />
+      )}
     </div>
   )
 }
