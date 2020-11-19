@@ -1,10 +1,17 @@
 image: artifactory.a-us-common.wfk8s.com/docker/core-platform/gitlab-runner:latest
 
 stages:
-  - build-pages
+  - build-and-test
+  - publish-pages
+
+build:
+  stage: build-and-test
+  script:
+    - yarn
+    - yarn test:coverage
   
 pages:
-  stage: build-pages
+  stage: publish-pages
   script:
     - yarn
     - yarn build
