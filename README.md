@@ -1,7 +1,7 @@
 [![pipeline status](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/badges/master/pipeline.svg)](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/-/commits/master)
 [![coverage report](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/badges/master/coverage.svg)](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/-/commits/master)
 
-![Minesweeper Logo](src/images/minesweeper-heaer.svg)
+![Minesweeper Logo](src/images/minesweeper-header.svg)
 
 # Minesweeper
 
