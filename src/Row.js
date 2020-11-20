@@ -23,10 +23,12 @@ export function Row({ gameGrid, rowIndex, gameLost, dispatch, gameOver }) {
         isSwept={gameOver || cell.isSwept}
         isFlagged={cell.isFlagged}
         clickHandler={e => {
-          e.stopPropagation()
+          const isRightClick = e.type === 'contextmenu'
+          isRightClick && e.preventDefault()
+
           dispatch({
             type: SWEEP_CELL,
-            payload: { x: rowIndex, y, shiftKey: e.shiftKey },
+            payload: { x: rowIndex, y, shiftKey: e.shiftKey || isRightClick },
           })
         }}
         key={'cell_' + y}

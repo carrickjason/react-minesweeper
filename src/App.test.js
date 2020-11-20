@@ -95,7 +95,7 @@ describe('App', () => {
     expect(screen.getByText('Start')).toBeInTheDocument()
   })
 
-  it('allows you to flag and unflag cells', () => {
+  it('allows you to flag and unflag cells with shift key', () => {
     render(<App />)
 
     fireEvent.change(screen.getByLabelText('Mines'), { target: { value: '1' } })
@@ -113,6 +113,27 @@ describe('App', () => {
     expect(screen.getByAltText('Flag')).toBeInTheDocument()
 
     fireEvent.click(gridCells[0], { shiftKey: true })
+    expect(screen.queryByAltText('Flag')).not.toBeInTheDocument()
+  })
+
+  it('allows you to flag and unflag cells with right click', () => {
+    render(<App />)
+
+    fireEvent.change(screen.getByLabelText('Mines'), { target: { value: '1' } })
+    fireEvent.click(screen.getByText('Play'))
+
+    const gridCells = screen.getAllByTestId('grid-cell')
+
+    fireEvent.contextMenu(gridCells[0])
+    expect(screen.getByAltText('Flag')).toBeInTheDocument()
+
+    fireEvent.contextMenu(gridCells[1])
+    expect(screen.getAllByAltText('Flag').length).toBe(1)
+
+    fireEvent.click(gridCells[0])
+    expect(screen.getByAltText('Flag')).toBeInTheDocument()
+
+    fireEvent.contextMenu(gridCells[0])
     expect(screen.queryByAltText('Flag')).not.toBeInTheDocument()
   })
 })

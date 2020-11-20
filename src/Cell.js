@@ -19,6 +19,7 @@ export function Cell({ isSwept, isFlagged, children, clickHandler }) {
     <button
       className={`h-8 w-8 m-sm rounded-sm transition-colors duration-200 ${cellStyle} ${textColor}`}
       onClick={clickHandler}
+      onContextMenu={clickHandler}
       disabled={isSwept}
       data-testid="grid-cell"
     >
