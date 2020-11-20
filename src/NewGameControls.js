@@ -8,7 +8,6 @@ import {
   START_GAME_FROM_UUID,
   UPDATE_GAME_SETUP_VALUE,
 } from './actions/constants'
-import { Header } from './Header'
 
 const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
   const maxNumMines = width * height - 1
@@ -24,7 +23,6 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
 
   return (
     <>
-      <Header />
       <div className="lg:w-1/2 m-auto w-auto">
         <form
           className="px-8 pt-6 pb-8 mb-8"

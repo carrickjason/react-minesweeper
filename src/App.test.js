@@ -101,16 +101,16 @@ describe('App', () => {
     const gridCells = screen.getAllByTestId('grid-cell')
 
     fireEvent.click(gridCells[0], { shiftKey: true })
-    expect(screen.getByAltText('Flag')).toBeInTheDocument()
+    expect(screen.getByAltText('Flagged Cell')).toBeInTheDocument()
 
     fireEvent.click(gridCells[1], { shiftKey: true })
-    expect(screen.getAllByAltText('Flag').length).toBe(1)
+    expect(screen.getAllByAltText('Flagged Cell').length).toBe(1)
 
     fireEvent.click(gridCells[0])
-    expect(screen.getByAltText('Flag')).toBeInTheDocument()
+    expect(screen.getByAltText('Flagged Cell')).toBeInTheDocument()
 
     fireEvent.click(gridCells[0], { shiftKey: true })
-    expect(screen.queryByAltText('Flag')).not.toBeInTheDocument()
+    expect(screen.queryByAltText('Flagged Cell')).not.toBeInTheDocument()
   })
 
   it('allows you to flag and unflag cells with right click', () => {
@@ -122,15 +122,15 @@ describe('App', () => {
     const gridCells = screen.getAllByTestId('grid-cell')
 
     fireEvent.contextMenu(gridCells[0])
-    expect(screen.getByAltText('Flag')).toBeInTheDocument()
+    expect(screen.getByAltText('Flagged Cell')).toBeInTheDocument()
 
     fireEvent.contextMenu(gridCells[1])
-    expect(screen.getAllByAltText('Flag').length).toBe(1)
+    expect(screen.getAllByAltText('Flagged Cell').length).toBe(1)
 
     fireEvent.click(gridCells[0])
-    expect(screen.getByAltText('Flag')).toBeInTheDocument()
+    expect(screen.getByAltText('Flagged Cell')).toBeInTheDocument()
 
     fireEvent.contextMenu(gridCells[0])
-    expect(screen.queryByAltText('Flag')).not.toBeInTheDocument()
+    expect(screen.queryByAltText('Flagged Cell')).not.toBeInTheDocument()
   })
 })

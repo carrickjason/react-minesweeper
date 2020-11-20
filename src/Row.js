@@ -12,7 +12,7 @@ export function Row({ gameGrid, rowIndex, gameLost, dispatch, gameOver }) {
 
     if (cell.hasMine) {
       const image = gameLost ? bomb : heart
-      const alt = gameLost ? 'Bomb' : 'Heart'
+      const alt = gameLost ? 'Mine' : 'Heart'
       cellContents = (
         <img src={image} alt={alt} className="m-auto" width={20} height={20} />
       )

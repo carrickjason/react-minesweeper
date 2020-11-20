@@ -11,8 +11,12 @@ export function Cell({ isSwept, isFlagged, children, clickHandler, hasMine }) {
   if (isSwept) {
     content = children
   } else if (isFlagged) {
-    content = <img src={flag} alt="Flag" className="m-auto" />
+    content = <img src={flag} alt="Flagged Cell" className="m-auto" />
   }
+
+  // is not swept and not flagged: Unswept Cell
+  // is not swpet and is flagged: Flagged Cell
+  // is swept and has mine: not need to handle
 
   const textColor = isSwept && content ? `text-${colorMap[content]}` : ''
   return (
@@ -23,6 +27,9 @@ export function Cell({ isSwept, isFlagged, children, clickHandler, hasMine }) {
       disabled={isSwept}
       data-testid="grid-cell"
       data-dirty={hasMine}
+      aria-label={
+        !content ? (isSwept ? 'Swept Cell' : `Unswept Cell`) : undefined
+      }
     >
       {content}
     </button>
