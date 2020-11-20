@@ -14,11 +14,23 @@ export function Cell({ isSwept, isFlagged, children, clickHandler, hasMine }) {
     content = <img src={flag} alt="Flagged Cell" className="m-auto" />
   }
 
-  // is not swept and not flagged: Unswept Cell
-  // is not swpet and is flagged: Flagged Cell
-  // is swept and has mine: not need to handle
+  let ariaLabel
+  if (!content) {
+    if (isSwept) {
+      ariaLabel = 'Swept Cell with 0 Neighboring Mines'
+    } else {
+      ariaLabel = 'Unswept Cell'
+    }
+  } else {
+    if (typeof content === 'number') {
+      ariaLabel = `Swept Cell with ${content} Neighboring ${
+        content === 1 ? 'Mine' : 'Mines'
+      }`
+    }
+  }
 
   const textColor = isSwept && content ? `text-${colorMap[content]}` : ''
+
   return (
     <button
       className={`h-8 w-8 m-sm rounded-sm transition-colors duration-200 ${cellStyle} ${textColor}`}
@@ -27,9 +39,7 @@ export function Cell({ isSwept, isFlagged, children, clickHandler, hasMine }) {
       disabled={isSwept}
       data-testid="grid-cell"
       data-dirty={hasMine}
-      aria-label={
-        !content ? (isSwept ? 'Swept Cell' : `Unswept Cell`) : undefined
-      }
+      aria-label={ariaLabel}
     >
       {content}
     </button>

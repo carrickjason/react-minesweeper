@@ -33,41 +33,45 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
             })
           }}
         >
-          <div className="flex text-center m-auto justify-around mb-12 flex-col xs:flex-row items-center">
-            <FormNumberInput
-              label="Columns"
-              id="width"
-              min={2}
-              max={20}
-              onChange={changeHandler}
-              value={width}
-              name="width"
-              required
-              additionalContainerClasses="xs:w-10 w-full"
-            />
-            <FormNumberInput
-              label="Rows"
-              id="height"
-              min={2}
-              max={20}
-              onChange={changeHandler}
-              value={height}
-              name="height"
-              required
-              additionalContainerClasses="xs:w-10 w-full"
-            />
-            <FormNumberInput
-              label="Mines"
-              id="numMines"
-              min={1}
-              max={maxNumMines}
-              onChange={changeHandler}
-              value={numMines}
-              name="numMines"
-              required
-              additionalContainerClasses="xs:w-10 w-full"
-            />
-          </div>
+          <fieldset>
+            <legend className="sr-only">Minesweeper Game Controls</legend>
+
+            <div className="flex text-center m-auto justify-around mb-12 flex-col xs:flex-row items-center">
+              <FormNumberInput
+                label="Columns"
+                id="width"
+                min={2}
+                max={20}
+                onChange={changeHandler}
+                value={width}
+                name="width"
+                required
+                additionalContainerClasses="xs:w-10 w-full"
+              />
+              <FormNumberInput
+                label="Rows"
+                id="height"
+                min={2}
+                max={20}
+                onChange={changeHandler}
+                value={height}
+                name="height"
+                required
+                additionalContainerClasses="xs:w-10 w-full"
+              />
+              <FormNumberInput
+                label="Mines"
+                id="numMines"
+                min={1}
+                max={maxNumMines}
+                onChange={changeHandler}
+                value={numMines}
+                name="numMines"
+                required
+                additionalContainerClasses="xs:w-10 w-full"
+              />
+            </div>
+          </fieldset>
           <Button type="submit">Play</Button>
         </form>
         <form

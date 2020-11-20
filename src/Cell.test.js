@@ -29,6 +29,8 @@ describe('Cell', () => {
     render(
       <Cell isSwept isFlagged={false} clickHandler={noop} hasMine={false} />
     )
-    expect(screen.getByLabelText('Swept Cell')).toBeInTheDocument()
+    expect(
+      screen.getByLabelText('Swept Cell with 0 Neighboring Mines')
+    ).toBeInTheDocument()
   })
 })

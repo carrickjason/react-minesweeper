@@ -31,7 +31,11 @@ function Timer({ delay }) {
   useEffect(() => {
     setCurrentDelay(delay)
   }, [delay])
-  return <span className="text-2xl ml-8">{ticks}</span>
+  return (
+    <span className="text-2xl ml-8" aria-label={`${ticks} Seconds`}>
+      {ticks}
+    </span>
+  )
 }
 
 export default Timer
