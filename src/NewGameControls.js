@@ -35,7 +35,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
             })
           }}
         >
-          <div className="flex text-center m-auto justify-around mb-12">
+          <div className="flex text-center m-auto justify-around mb-12 flex-col xs:flex-row items-center">
             <FormNumberInput
               label="Columns"
               id="width"
@@ -45,7 +45,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
               value={width}
               name="width"
               required
-              additionalContainerClasses="w-10"
+              additionalContainerClasses="xs:w-10 w-full"
             />
             <FormNumberInput
               label="Rows"
@@ -56,7 +56,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
               value={height}
               name="height"
               required
-              additionalContainerClasses="w-10"
+              additionalContainerClasses="xs:w-10 w-full"
             />
             <FormNumberInput
               label="Mines"
@@ -67,7 +67,7 @@ const NewGameControls = ({ width, height, numMines, uuid, dispatch }) => {
               value={numMines}
               name="numMines"
               required
-              additionalContainerClasses="w-10"
+              additionalContainerClasses="xs:w-10 w-full"
             />
           </div>
           <Button type="submit">Play</Button>
