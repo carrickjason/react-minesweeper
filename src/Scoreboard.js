@@ -8,7 +8,7 @@ const Scoreboard = ({ numRemainingFlags, delay }) => {
         <span className="text-2xl mr-8">{numRemainingFlags}</span>{' '}
         {numRemainingFlags === 1 ? 'Flag' : 'Flags'} Left
       </p>
-      <p className="flex items-center justify-center w-2/3 sm:w-1/2 lg:w-1/3 m-4 min-w-max bg-darkBlue rounded p-4">
+      <p className="flex items-center justify-center w-2/3 sm:w-1/2 lg:w-1/3 m-4 min-w-max bg-darkBlue rounded p-4 whitespace-no-wrap">
         Game Time <Timer delay={delay} />
       </p>
     </div>
