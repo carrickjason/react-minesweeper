@@ -2,7 +2,7 @@ import React from 'react'
 import { colorMap } from './constants/colors'
 import flag from './images/flag.svg'
 
-export function Cell({ isSwept, isFlagged, children, clickHandler }) {
+export function Cell({ isSwept, isFlagged, children, clickHandler, hasMine }) {
   const cellStyle = isSwept
     ? 'bg-darkBlue cursor-default font-bold'
     : 'hover:bg-eggshell focus:bg-eggshell bg-white'
@@ -22,6 +22,7 @@ export function Cell({ isSwept, isFlagged, children, clickHandler }) {
       onContextMenu={clickHandler}
       disabled={isSwept}
       data-testid="grid-cell"
+      data-dirty={hasMine}
     >
       {content}
     </button>

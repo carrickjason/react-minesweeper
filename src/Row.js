@@ -22,6 +22,7 @@ export function Row({ gameGrid, rowIndex, gameLost, dispatch, gameOver }) {
       <Cell
         isSwept={gameOver || cell.isSwept}
         isFlagged={cell.isFlagged}
+        hasMine={cell.hasMine}
         clickHandler={e => {
           const isRightClick = e.type === 'contextmenu'
           isRightClick && e.preventDefault()

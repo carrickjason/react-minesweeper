@@ -42,6 +42,7 @@ You can start a new game in one of two ways:
 - Git hooks and linting using Husky, Commitlint, and lint-staged
 - Commit message CLI using Commitizen
 - README badges
+- GitLab CI Pipeline
 
 ## Local Development
 

@@ -67,17 +67,14 @@ describe('App', () => {
   })
 
   it('can be played all the way until you win', () => {
-    render(<App />)
+    const { container } = render(<App />)
 
     fireEvent.change(screen.getByLabelText('Or enter a UUID'), {
       target: { value: 'abc' },
     })
     fireEvent.click(screen.getByText('Start'))
-
-    const gridCells = screen.getAllByTestId('grid-cell')
-    const safeCells = [3, 5, 7, 8, 12, 15, 17]
-
-    safeCells.forEach(cellIndex => fireEvent.click(gridCells[cellIndex]))
+    const safeCells = container.querySelectorAll('[data-dirty="false"]')
+    safeCells.forEach(cell => fireEvent.click(cell))
 
     expect(screen.getByAltText('You win')).toBeInTheDocument()
     expect(screen.getByText('Play Again')).toBeInTheDocument()
