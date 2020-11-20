@@ -1,12 +1,15 @@
-const magenta = '#f54dbd'
-const lightBlue = '#37cbf2'
-const yellow = '#ebe267'
-const purple = '#ad5aff'
-const red = '#f44044'
+const magenta = '#F54DBD'
+const lightBlue = '#37CBF2'
+const yellow = '#EBE267'
+const purple = '#AD5AFF'
+const red = '#F44044'
 const blue = '#272F3E'
 const darkBlue = '#1B2434'
 const white = '#DBEAF8'
 const eggshell = '#B7CDE2'
+const green = '#37F2B3'
+const orange = '#F29137'
+const dustyBlue = '#677BFF'
 
 module.exports = {
   variants: {
@@ -26,6 +29,9 @@ module.exports = {
         darkBlue,
         white,
         eggshell,
+        green,
+        orange,
+        dustyBlue,
       },
       borderWidth: {
         12: '12px',
