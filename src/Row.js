@@ -1,28 +1,21 @@
 import React from 'react'
 import { Cell } from './Cell'
 import { SWEEP_CELL } from './actions/constants'
-import bomb from './images/bomb.svg'
-import heart from './images/heart.svg'
 
 export function Row({ gameGrid, rowIndex, gameLost, dispatch, gameOver }) {
   const cols = []
   for (let y = 0; y < gameGrid[rowIndex].length; ++y) {
     const cell = gameGrid[rowIndex][y]
-    let cellContents = cell.mineCounts || ''
-
-    if (cell.hasMine) {
-      const image = gameLost ? bomb : heart
-      const alt = gameLost ? 'Exploded Mine' : 'Avoided Mine'
-      cellContents = (
-        <img src={image} alt={alt} className="m-auto" width={20} height={20} />
-      )
-    }
 
     cols.push(
       <Cell
         isSwept={gameOver || cell.isSwept}
         isFlagged={cell.isFlagged}
         hasMine={cell.hasMine}
+        mineCounts={cell.mineCounts}
+        gameLost={gameLost}
+        x={rowIndex}
+        y={y}
         clickHandler={e => {
           const isRightClick = e.type === 'contextmenu'
           isRightClick && e.preventDefault()
@@ -33,9 +26,7 @@ export function Row({ gameGrid, rowIndex, gameLost, dispatch, gameOver }) {
           })
         }}
         key={'cell_' + y}
-      >
-        {cellContents}
-      </Cell>
+      />
     )
   }
 

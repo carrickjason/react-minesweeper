@@ -1,15 +1,34 @@
 import React from 'react'
 import { colorMap } from './constants/colors'
 import flag from './images/flag.svg'
+import bomb from './images/bomb.svg'
+import heart from './images/heart.svg'
 
-export function Cell({ isSwept, isFlagged, children, clickHandler, hasMine }) {
+export function Cell({
+  isSwept,
+  isFlagged,
+  clickHandler,
+  hasMine,
+  mineCounts,
+  gameLost,
+  x,
+  y,
+}) {
   const cellStyle = isSwept
     ? 'bg-darkBlue cursor-default font-bold'
     : 'hover:bg-eggshell focus:bg-eggshell bg-white'
 
   let content = ''
   if (isSwept) {
-    content = children
+    if (hasMine) {
+      const image = gameLost ? bomb : heart
+      const alt = gameLost ? 'Exploded Mine' : 'Avoided Mine'
+      content = (
+        <img src={image} alt={alt} className="m-auto" width={20} height={20} />
+      )
+    } else if (mineCounts) {
+      content = mineCounts
+    }
   } else if (isFlagged) {
     content = <img src={flag} alt="Flagged Cell" className="m-auto" />
   }
