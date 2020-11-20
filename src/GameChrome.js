@@ -7,7 +7,7 @@ import youLost from './images/you-lost.svg'
 import youWin from './images/you-win.svg'
 import minesweeperLogo from './images/minesweeper-logo.svg'
 
-const statusImageClass = `m-auto my-12`
+const statusImageClass = `m-auto my-12  w-2/3 sm:w-1/2 lg:w-1/4`
 
 const getStatusMessage = ({ gameLost, gameWon }) => {
   return gameLost ? (
