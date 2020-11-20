@@ -17,6 +17,7 @@ export function Cell({
   const cellStyle = isSwept
     ? 'bg-darkBlue cursor-default font-bold'
     : 'hover:bg-eggshell focus:bg-eggshell bg-white'
+  const coordinatesLabel = `Cell in row ${x + 1} column ${y + 1}:`
 
   let content = ''
   if (isSwept) {
@@ -24,13 +25,25 @@ export function Cell({
       const image = gameLost ? bomb : heart
       const alt = gameLost ? 'Exploded Mine' : 'Avoided Mine'
       content = (
-        <img src={image} alt={alt} className="m-auto" width={20} height={20} />
+        <img
+          src={image}
+          alt={`${coordinatesLabel} ${alt}`}
+          className="m-auto"
+          width={20}
+          height={20}
+        />
       )
     } else if (mineCounts) {
       content = mineCounts
     }
   } else if (isFlagged) {
-    content = <img src={flag} alt="Flagged Cell" className="m-auto" />
+    content = (
+      <img
+        src={flag}
+        alt={`${coordinatesLabel} Flagged Cell`}
+        className="m-auto"
+      />
+    )
   }
 
   let ariaLabel
@@ -58,7 +71,7 @@ export function Cell({
       disabled={isSwept}
       data-testid="grid-cell"
       data-dirty={hasMine}
-      aria-label={ariaLabel}
+      aria-label={ariaLabel && `${coordinatesLabel} ${ariaLabel}`}
     >
       {content}
     </button>

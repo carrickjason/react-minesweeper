@@ -32,6 +32,7 @@ You can start a new game in one of two ways:
 ## Features
 
 - 100% test coverage
+- WCAG 2.1 AA compliant
 - Dark theme
 - Mobile responsive
 - Keyboard navigable
