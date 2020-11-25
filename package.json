@@ -16,7 +16,6 @@
     "test:coverage": "react-scripts test --watchAll=false --coverage",
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'"
   },
-  "homepage": "https://marvel.gitlab.workfront.tech/react-minesweeper-2020",
   "eslintConfig": {
     "extends": "react-app"
   },

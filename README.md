@@ -1,6 +1,3 @@
-[![pipeline status](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/badges/master/pipeline.svg)](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/-/commits/master)
-[![coverage report](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/badges/master/coverage.svg)](https://gitlab.workfront.tech/marvel/react-minesweeper-2020/-/commits/master)
-
 ![Minesweeper Logo](src/images/minesweeper-header.svg)
 
 # Minesweeper
@@ -37,13 +34,11 @@ You can start a new game in one of two ways:
 - Mobile responsive
 - Keyboard navigable
 - Accepts a UUID for pseudorandom game board generation
-- Hosted on GitLab pages
 - HTML5 form validation
 - Prettier for code formatting
 - Git hooks and linting using Husky, Commitlint, and lint-staged
 - Commit message CLI using Commitizen
 - README badges
-- GitLab CI Pipeline
 
 ## Local Development
 
